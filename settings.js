@@ -1,6 +1,6 @@
 module.exports = {
     /* Browser path, can get by pasting this in url section "about:support", then find profile path, copy that and paste it here, */
-    "browser_path": "Paste path here",
+    "browser_path": "test",
     /*Your School/College group name */
     "group_name": "Some group name here", 
     /* After how much time, it should join meeting */
