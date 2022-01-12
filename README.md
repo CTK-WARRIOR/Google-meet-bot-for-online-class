@@ -24,7 +24,7 @@ There are few things you need to do before you even use the code. Below are the 
 - Go to settings.js file and fill all the details.
 - Then open terminal and use `npm i` to install all the required packages
 - Use command `npm run start`
-- First time it will ask you to scan QR code
+- First time it will ask you to scan QR code (suggested to use terminal in new window)
 
 ## Note
 Its not like i created this bot because i dont want to join online classes, thats not the real reason. i created it to make my work easier, i dont need to check if link is sent to group or not, it will open class for me and i dont even need to open whatsapp xD

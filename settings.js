@@ -1,8 +1,8 @@
 module.exports = {
-    /* Browser path, can get by pasting this in url section "about:support", then find profile path, copy that and paste it here, */
-    "browser_path": "test",
+    /* Browser path, can get by pasting this in url section "about:support", then find "Profile Folder", copy that and paste it here, aslso replace all "\" with "\\" */
+    "browser_path": "C:\\Users\\Example\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\0n0h14lp.default-release-1641851519690",
     /*Your School/College group name */
-    "group_name": "Some group name here", 
+    "group_name": "Tesr", 
     /* After how much time, it should join meeting */
     "join_meeting_after": 2, 
     /* After how many minutes it should check student counts (for the purpose of leave) */

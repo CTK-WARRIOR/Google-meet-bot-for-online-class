@@ -1,5 +1,6 @@
 const { Client } = require('whatsapp-web.js');
 const settings = require("./settings.js")
+const qrcode = require('qrcode-terminal');
 
 const MeetClass = require("./tools/meet")
 const Meet = new MeetClass({
@@ -9,7 +10,7 @@ const Meet = new MeetClass({
 const client = new Client({ clientId: 'example' });
 
 client.on('qr', (qr) => {
-    console.log('[ERROR]: Please scan the QR code.');
+    qrcode.generate(qr, {small: true});
 });
 
 client.on('authenticated', () => {
