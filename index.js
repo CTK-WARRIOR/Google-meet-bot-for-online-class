@@ -57,7 +57,7 @@ client.on('disconnected', (reason) => {
 client.initialize();
 
 setInterval(async function () {
-    if (!Meet.meetings?.length) return;
+    if (!await Meet.isConnected() || !Meet.meetings?.length) return;
     Meet.meetings.forEach(async (meeting) => {
         const members = await Meet.getMemberList(meeting)
         if (members.length <= settings.member_count) {

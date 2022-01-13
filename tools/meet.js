@@ -1,5 +1,6 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const firefox = require('selenium-webdriver/firefox');
+const { promises } = require("dns")
 
 module.exports = class Meet {
     constructor({path} = {}) {
@@ -83,8 +84,20 @@ module.exports = class Meet {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
+    /**
+     * 
+     * @param {string} content 
+     * @returns {void}
+     */
     log(content) {
         return console.log(`[${new Date().toLocaleTimeString()}] ${content}`)
+    }
+
+    /**
+     * @returns {boolean} 
+     */
+    async isConnected() {
+        return !!await promises.resolve('google.com').catch(()=>{});
     }
 
 }
