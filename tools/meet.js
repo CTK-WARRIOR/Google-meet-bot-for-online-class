@@ -52,13 +52,25 @@ module.exports = class Meet {
      * @param {object} meeting 
      * @returns {array}
      */
-    async getMemberList(meeting) {
+    async getMemberList(meeting, secondTry) {
         const { driver } = meeting
 
-        const elements = await driver.findElements(By.className("kvLJWc"))
-        const members = await Promise.all(elements.map(x => {
+        let elements = await driver.findElements(By.className("cxdMu"))
+
+        let members = await Promise.all(elements.map(x => {
             return x.getText()
-        }))
+        })).then(members => members.filter(x => x))
+
+        if(!members.length && !secondTry) {
+            const textContent = await driver.executeScript(`document.querySelector('div.R3Gmyc.qwU8Me.qdulke')`) 
+
+            if(!textContent) {
+                await driver.findElements(By.className("r6xAKc"))
+                .then((buttons) => buttons[1].click())
+
+                members = await this.getMemberList(meeting, true)
+            }
+        }
 
         return members;
     }
