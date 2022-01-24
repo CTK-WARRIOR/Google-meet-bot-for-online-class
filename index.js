@@ -60,6 +60,10 @@ setInterval(async function () {
     if (!await Meet.isConnected() || !Meet.meetings?.length) return;
     Meet.meetings.forEach(async (meeting) => {
         const members = await Meet.getMemberList(meeting)
+        .catch(err => {
+            return console.log(`${err}`)
+        })
+        
         if (members.length <= settings.member_count) {
             Meet.log(`Leaved the meeting by ${meeting.teacher}`)
             await Meet.exitClass(meeting)

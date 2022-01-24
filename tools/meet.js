@@ -56,7 +56,6 @@ module.exports = class Meet {
         const { driver } = meeting
 
         let elements = await driver.findElements(By.className("cxdMu"))
-
         let members = await Promise.all(elements.map(x => {
             return x.getText()
         })).then(members => members.filter(x => x))
