@@ -16,6 +16,8 @@ module.exports = class Meet {
     async openClass(url, teacher) {
         const options = new firefox.Options();
         options.setProfile(this.path)
+        options.setPreference("permissions.default.microphone", 1);
+        options.setPreference("permissions.default.camera", 1);
 
         const driver = await new Builder()
             .forBrowser('firefox')

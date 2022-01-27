@@ -7,7 +7,8 @@ const Meet = new MeetClass({
     path: settings.browser_path
 })
 
-const client = new Client({ clientId: 'example' });
+const client = new Client({ puppeteer: { args: ['--no-sandbox'] }, clientId: 'example', disableMessageHistory: false });
+client.initialize();
 
 client.on('qr', (qr) => {
     qrcode.generate(qr, {small: true});
@@ -54,7 +55,7 @@ client.on('disconnected', (reason) => {
     console.log('Client was logged out', reason);
 });
 
-client.initialize();
+
 
 setInterval(async function () {
     if (!await Meet.isConnected() || !Meet.meetings?.length) return;
@@ -64,7 +65,7 @@ setInterval(async function () {
             return console.log(`${err}`)
         })
         
-        if (members.length <= settings.member_count) {
+        if (members?.length <= settings.member_count) {
             Meet.log(`Leaved the meeting by ${meeting.teacher}`)
             await Meet.exitClass(meeting)
         }
